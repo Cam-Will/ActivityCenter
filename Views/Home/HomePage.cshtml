@@ -1,0 +1,66 @@
+@model List<Event>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Coiny&family=Dela+Gothic+One&family=Hachi+Maru+Pop&family=Kalam:wght@700&family=Kumar+One&family=Londrina+Solid:wght@100&family=Luckiest+Guy&family=Marck+Script&family=Permanent+Marker&family=Sigmar+One&family=Squada+One&family=Yellowtail&display=swap" rel="stylesheet">
+    <title>Activity Center - Dashboard</title>
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+<body class="container">
+    <div id="main">
+        <div id="events">
+            <h4 class="display-4">Welcome to the Dojo Activty Center!</h4>
+            <div id="links">
+                <h5>Nice to see you, @ViewBag.SessionName!</h5>
+                <a href="/logout">Logout</a>
+            </div>
+                <table class="table table-success">
+                    <tr>
+                        <th>Activity</th>
+                        <th>Date and Time</th>
+                        <th>Duration</th>
+                        <th>Event Coordinator</th>
+                        <th># of Participants</th>
+                        <th>Actions</th>
+                    </tr>
+                    @foreach(var l in Model)
+                    {
+
+                        <tr>
+                            <td><a href="/event/@l.EventId">@l.Name</a></td>
+                            <td>@l.EventDate</td>
+                            <td>@l.Duration</td>
+                            <td>@l.Coordinator.FirstName @l.Coordinator.LastName</td>
+                            <td>@l.Participators.Count</td>
+                            <td>
+                            @if (l.Coordinator.UserId == ViewBag.Id)
+                            {
+                                <a class="btn btn-sm btn-danger" href="/delete/@l.EventId/@ViewBag.Id">Delete Event</a>
+                            }
+                            else
+                            {
+                                @if (l.Participators.Any(u => u.UserId == ViewBag.Id))
+                                {
+                                    <a class="btn btn-sm btn-warning" href="/leave/@l.EventId/@ViewBag.Id">Leave Event</a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-sm btn-warning" href="/join/@l.EventId/@ViewBag.Id">Join Event</a>
+                                }
+                            }
+                            </td>
+                        </tr>
+                    }
+                </table>
+                <div id="addbutt">
+                    <a class="btn btn-primary" href="/new">Add New Activity</a>
+                </div>
+        </div>
+    </div>
+</body>
+</html>

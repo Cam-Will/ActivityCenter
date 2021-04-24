@@ -1,0 +1,60 @@
+*{
+    font-family: Sigmar One;
+    cursor: grab;
+}
+.container{
+    min-height: 100vh;
+    background-color: aliceblue;
+}
+#container{
+    display: flex;
+}
+#main{
+    text-align: center;
+    margin-top: 75px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#links{
+    display: flex;
+    justify-content: space-between;
+}
+#form{
+    text-align: initial;
+    outline: #4CAF50 solid 10px;
+    border: 2px solid black;
+    padding: 20px;
+}
+#register{
+    margin: auto;
+}
+#login{
+    margin: auto;
+}
+#home{
+    align-self: flex-end;
+}
+#addbutt{
+    display: flex;
+    flex-direction: row-reverse;
+}
+#dishes{
+    align-self: flex-start;
+    text-align: initial;
+}
+h1{
+    margin-bottom: 20px;
+    text-decoration: underline;
+    color: green;
+}
+#buttons{
+    display: flex;
+    flex-direction: row-reverse;
+}
+#but1{
+    margin-right: 90px;
+}
+#but2{
+    margin-left: 90px;
+}
