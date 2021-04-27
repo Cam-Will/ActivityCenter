@@ -70,8 +70,8 @@ namespace ActivityCenter.Controllers
                 if(userInDb == null)
                 {
                     // Add an error to ModelState and return to View!
-                    ModelState.AddModelError("Email", "Please Use Valid Email Address!");
-                    return View("Login");
+                    ModelState.AddModelError("logEmail", "Your Combination of Email and Password is Invalid!");
+                    return View("Index");
                 }
                 
                 // Initialize hasher object
@@ -81,10 +81,10 @@ namespace ActivityCenter.Controllers
                 var result = hasher.VerifyHashedPassword(userlogin, userInDb.Password, userlogin.logPassword);
                 
                 // result can be compared to 0 for failure
-                if(result == 0)
+                if(result == 0 || result == null)
                 {
                     // handle failure (this should be similar to how "existing email" is handled)
-                    ModelState.AddModelError("Passhash", "Your Combination of Email and Password is Invalid!");
+                    ModelState.AddModelError("logPassword", "Your Combination of Email and Password is Invalid!");
                     return View("Index");
                 }
                 HttpContext.Session.SetInt32("UserId",userInDb.UserId);
