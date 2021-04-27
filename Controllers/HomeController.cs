@@ -65,7 +65,7 @@ namespace ActivityCenter.Controllers
             if(ModelState.IsValid)
             {
                 // If inital ModelState is valid, query for a user with provided email
-                User  userInDb = _context.Users.FirstOrDefault(u => u.Email == userlogin.Email);
+                User  userInDb = _context.Users.FirstOrDefault(u => u.Email == userlogin.logEmail);
                 // If no user exists with provided email
                 if(userInDb == null)
                 {
@@ -78,7 +78,7 @@ namespace ActivityCenter.Controllers
                 var hasher = new PasswordHasher<LoginUser>();
                 
                 // verify provided password against hash stored in db
-                var result = hasher.VerifyHashedPassword(userlogin, userInDb.Password, userlogin.Password);
+                var result = hasher.VerifyHashedPassword(userlogin, userInDb.Password, userlogin.logPassword);
                 
                 // result can be compared to 0 for failure
                 if(result == 0)
