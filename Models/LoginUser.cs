@@ -6,7 +6,10 @@ namespace ActivityCenter.Models
 {
     public class LoginUser
     {
+        [Display(Name = "Email:")]
         public string logEmail {get; set;}
+
+        [Display(Name = "Password:")]
         public string logPassword { get; set; }
     }
 
