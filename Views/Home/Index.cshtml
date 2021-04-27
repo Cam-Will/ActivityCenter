@@ -51,14 +51,14 @@
             <div id="form">
                 <form asp-action="Logis" asp-controller="Home" method="post">
                     <div class="form-group">
-                        <label asp-for="Email"></label>
-                        <input class="form-control" asp-for="Email">
-                        <span asp-validation-for="Email" class="alert-danger"></span><br>
+                        <label asp-for="logEmail"></label>
+                        <input class="form-control" asp-for="logEmail">
+                        <span asp-validation-for="logEmail" class="alert-danger"></span><br>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Password"></label>
-                        <input class="form-control" asp-for="Password">
-                        <span asp-validation-for="Password" class="alert-danger"></span><br>
+                        <label asp-for="logPassword"></label>
+                        <input class="form-control" asp-for="logPassword">
+                        <span asp-validation-for="logPassword" class="alert-danger"></span><br>
                     </div>
                     <input class="btn btn-success" value="Login Now" type="submit">
                 </form>
